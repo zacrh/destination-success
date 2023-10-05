@@ -24,6 +24,7 @@ function KeyPressCounter() {
       if (event.key === 'Escape') {
         setShowResults(false);
         setResetScreen('');
+        // setThankYou('');
         setIsLocked(false);
       }
       if (event.key === 'ArrowDown') {
@@ -87,7 +88,6 @@ function KeyPressCounter() {
         });
       }
     };
-    
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
