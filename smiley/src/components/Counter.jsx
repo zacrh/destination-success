@@ -13,6 +13,7 @@ function KeyPressCounter() {
   const [isLocked, setIsLocked] = useState(false);
   const [flicker, setFlicker] = useState('');
   const [thankYou, setThankYou] = useState('');
+  const [reset, setResetScreen] = useState('');
   const [showResults, setShowResults] = useState(false);
   const [counters, setCounters] = useState(
     JSON.parse(localStorage.getItem('counters')) || defaultCounters,
@@ -22,6 +23,7 @@ function KeyPressCounter() {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
         setShowResults(false);
+        setResetScreen('');
         setIsLocked(false);
       }
       if (event.key === 'ArrowDown') {
@@ -42,6 +44,12 @@ function KeyPressCounter() {
         // Reset counters
         setCounters(defaultCounters);
         localStorage.setItem('counters', JSON.stringify(defaultCounters));
+        setResetScreen(`${dateTime} Counters`);
+        setIsLocked(true);
+        setTimeout(() => {
+          setResetScreen('');
+          setIsLocked(false);
+        }, 3000);
         return;
       }
   
@@ -96,7 +104,16 @@ function KeyPressCounter() {
               {counters[thankYou].thankYou}
             </h4>
           </div>
-        ) : (
+        ) : 
+        reset !== '' ? (
+          <div className="reset">
+            <h2 className="header" style={{marginTop: 0}}>Votes Reset!</h2>
+            <h4 className="sub">
+              Previous votes are stored at <i>{reset}</i>
+            </h4>
+          </div>
+        ) :
+        (
           <div className="rate">
           <h2 className="header">Rate Us!</h2>
       <h4 className="sub">Tell us your experience</h4>

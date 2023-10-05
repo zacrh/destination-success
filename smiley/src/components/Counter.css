@@ -30,6 +30,14 @@ body {
     width: 100%;
 }
 
+.reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .rate {
     display: flex;
     width: 100%;
@@ -83,3 +91,4 @@ body {
     color: #314762;
     font-size: 1.6em;
 }
+
