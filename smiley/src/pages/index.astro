@@ -1,6 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro.jsx';
+import Layout from '../layouts/Layout.astro';
 import KeyPressCounter from '../components/Counter.jsx';
+import "../components/Counter.css";
 ---
 
+<Layout title="CTE">
 <KeyPressCounter client:only />
+</Layout>
