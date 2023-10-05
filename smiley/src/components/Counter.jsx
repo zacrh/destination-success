@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Counter.css';
 
 function KeyPressCounter() {
   const defaultCounters = {
@@ -43,9 +44,10 @@ function KeyPressCounter() {
   }, [counters]);
 
   return (
-    <div>
-      <h2>Key Press Counter</h2>
-      <div>
+    <div className="container">
+      <h2 className="header">Rate Us!</h2>
+      <h4 className="sub">Tell us your experience</h4>
+      <div className="main">
       {Object.entries(counters).map(([key, value]) =>
   key !== " " ? (
     <div key={key}>
@@ -56,8 +58,9 @@ function KeyPressCounter() {
           opacity: flicker === key ? "0.5" : "1",
           transition: "opacity 1s",
         }}
+        className="face"
       />{" "}
-      {value.emoji} Pressed: {value.count}
+      {/* {value.emoji} Pressed: {value.count} */}
     </div>
   ) : null
 )}
