@@ -31,7 +31,7 @@ This is a simple feedback system for the upcoming SBISD CTE event. It is designe
 
 ## How To Run Locally
 1. Clone this repository
-2. `cd` into the cloned repository
+2. `cd` into the cloned repository, then `cd` into the `app` directory
 3. Install Node.js & NPM if you haven't already
     - `brew install node` if you're on MacOS
     - Download the [Windows Installer](https://nodejs.org/en/#home-downloadhead) directly from the [nodejs.org](https://nodejs.org) website if you're on Windows
