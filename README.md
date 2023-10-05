@@ -22,7 +22,7 @@ This is a simple feedback system for the upcoming SBISD CTE event. It is designe
 3. Click on a feedback type and watch the magic happen!
 
 ## Key Assignments
-1. Left Arrow: **Good** 😄
+1. Left Arrow: **Good** 🙂
 2. Up Arrow: **Fine** 😐
 3. Right Arrow: **Poor** 🙁
 4. Down Arrow: **Show Totals** 📊
