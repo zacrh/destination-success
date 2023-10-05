@@ -1,6 +1,6 @@
 # CTE Event Feedback System
 
-This is a simple feedback system for the upcoming SBISD CTE event. It is designed to work with the feedback boxes built by students at Westchester Academy for International Studies, which is why the inputs are assigned to arrow keys. To see the system in action, head over to [https://cte.0z.gg/](https://cte.0z.gg/).
+This is a simple feedback system for the upcoming SBISD CTE event. It is designed to work with the feedback boxes built by students at Westchester Academy for International Studies, which is why the inputs are assigned to arrow keys. To see the system in action, head over to [https://cte.0z.gg/](https://cte.0z.gg/). Built with [Astro](https://astro.build/) and [React](https://react.dev/).
 
 ![Feedback Preview](img/smiley-preview.png)
 
