@@ -2,7 +2,7 @@ body {
     height: 100vh;
     overflow: hidden;
     margin: 0;
-    font-family: Inter;
+    font-family: Inter, system-ui, sans-serif;
 }
 
 .container {
