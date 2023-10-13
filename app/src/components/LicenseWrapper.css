@@ -1,0 +1,58 @@
+.license {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.license-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.license-input {
+    min-width: 400px;
+    color: #314762;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1.5px solid #c8cfd6;
+    color: #314762;
+    /* margin-bottom: 15px; */
+    margin-right: 15px;
+}
+
+.license-input::placeholder {
+    color: #c8cfd6;
+}
+
+.license-input:focus {
+    outline: none;
+    border: 1.5px solid #314762;
+}
+
+.license-button {
+    /* min-width: 443px; */
+    padding: 8px 40px;  
+    font-size: 1em;
+    color: white;
+    background-color: #314762;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    height: 47px;
+}
+
+.license-button.ineligible {
+    background-color: #c8cfd6;
+    cursor: not-allowed;
+}
+
+.questionnaire {
+    height: 100%;
+}

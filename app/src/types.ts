@@ -14,28 +14,18 @@ export interface Database {
           device: string | null
           device_id: string
           id: number
-          license_id: number | null
         }
         Insert: {
           device?: string | null
           device_id: string
           id?: number
-          license_id?: number | null
         }
         Update: {
           device?: string | null
           device_id?: string
           id?: number
-          license_id?: number | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "devices_license_id_fkey"
-            columns: ["license_id"]
-            referencedRelation: "licenses"
-            referencedColumns: ["id"]
-          }
-        ]
+        Relationships: []
       }
       events: {
         Row: {
@@ -60,21 +50,36 @@ export interface Database {
       }
       licenses: {
         Row: {
+          activated_at: string | null
+          device: string | null
           event_id: number | null
           id: number
+          ip_address: string | null
           license_key: string
         }
         Insert: {
+          activated_at?: string | null
+          device?: string | null
           event_id?: number | null
           id?: number
+          ip_address?: string | null
           license_key: string
         }
         Update: {
+          activated_at?: string | null
+          device?: string | null
           event_id?: number | null
           id?: number
+          ip_address?: string | null
           license_key?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "licenses_device_fkey"
+            columns: ["device"]
+            referencedRelation: "devices"
+            referencedColumns: ["device_id"]
+          },
           {
             foreignKeyName: "licenses_event_id_fkey"
             columns: ["event_id"]
