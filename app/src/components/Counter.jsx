@@ -19,6 +19,7 @@ function KeyPressCounter() {
     JSON.parse(localStorage.getItem('counters')) || defaultCounters,
   );
 
+
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
@@ -27,6 +28,15 @@ function KeyPressCounter() {
         // setThankYou('');
         setIsLocked(false);
       }
+
+      if (event.key === 'ArrowDown' && showResults) {
+        setShowResults(false);
+        setIsLocked(false);
+      } 
+
+      // if is locked don't reset or show results
+      if (isLocked) return;
+
       if (event.key === 'ArrowDown') {
         if (showResults) return;
         setShowResults(true);
