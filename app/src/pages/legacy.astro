@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Questionnaire from '../components/Questionnaire';
+import "../components/Counter.css";
+---
+
+<Layout title="Feedback">
+<Questionnaire client:only />
+</Layout>
