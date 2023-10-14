@@ -1,0 +1,33 @@
+.header.question-header {
+    font-size: 3.6em;
+    max-width: 80%;
+    white-space: pre-wrap;
+}
+
+.face.not-hq {
+    max-height: 350px;
+}
+
+.container.thank-you {
+    background-image: url('/public/thankyou.png');
+}
+
+.container.question {
+    background-image: url('/public/question.png');
+}
+
+.sub {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.face-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.event-info {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.thank-you {
+    /* margin-bottom: 250px; */
+}

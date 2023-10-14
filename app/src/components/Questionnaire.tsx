@@ -3,8 +3,11 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from "../supabase";
 import "./Counter.css";
+import "./Questionnaire.css";
 
 function Questionnaire() {
+  
+
   const defaultCounters = {
     ArrowLeft: {
       count: 0,
@@ -32,11 +35,41 @@ function Questionnaire() {
   };
 
   const questions = [
-    "How was your experience?",
-    "How did you feel about the passport?",
-    "How did you feel about the diversity of career-fields?",
-    "How would you rate the learning experience?",
+    `How was your experience at \n Destination Success?`,
+    "Were you able to complete your \n passport activity?",
+    "Did you discover a new CTE \n course at SBISD?",
+    "How likely are you to sign up for a \n CTE course at SBISD?",
+    "Did you enjoy the hands-on activities \n at each career table?"
   ];
+
+
+  // const createAnswers = () => {
+
+  //   console.log(hq);
+  //   let expressions = {}
+
+  //   if (hq === true) {
+  //     expressions = {
+  //       good: './good.png',
+  //       okay: './fine.png',
+  //       poor: './poor.png',
+  //       yes: './good.png',
+  //       no: './poor.png',
+  //     }
+  //   } else if (hq === false) {
+  //     expressions = {
+  //       good: './happy.png',
+  //       okay: './meh.png',
+  //       poor: './frown.png',
+  //       yes: './yes.png',
+  //       no: './no.png',
+  //     }
+  //   }
+  //   console.log(expressions.good)
+
+    
+  // }
+  const expressions = {}
 
   const [isLocked, setIsLocked] = useState(false);
   const [flicker, setFlicker] = useState("");
@@ -46,9 +79,207 @@ function Questionnaire() {
   const [intro, setIntro] = useState(true);
   const [eventData, setEventData] = useState(null);
   const [votingSessionId, setVotingSessionId] = useState(null);
+  
+  const hq = false;
+
+  const answerChoicesHQ = [
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './good.png',
+        emoji: "😊",
+        text: "Good",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowUp: {
+        count: 0,
+        img: './fine.png',
+        emoji: "😐",
+        text: "Okay",
+        thankYou: "We hope you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './poor.png',
+        emoji: "😞",
+        text: "Poor",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './good.png',
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './poor.png',
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './good.png',
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './poor.png',
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './good.png',
+        emoji: "😊",
+        text: "Very Likely",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowUp: {
+        count: 0,
+        img: './fine.png',
+        emoji: "😐",
+        text: "Somewhat Likely",
+        thankYou: "We hope you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './poor.png',
+        emoji: "😞",
+        text: "Not Likely",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: "/good.png",
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: "/poor.png",
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    }
+  ]
+
+  const answerChoices = [
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './happy.png',
+        emoji: "😊",
+        text: "Good",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowUp: {
+        count: 0,
+        img: './meh.png',
+        emoji: "😐",
+        text: "Okay",
+        thankYou: "We hope you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './frown.png',
+        emoji: "😞",
+        text: "Poor",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './yes.png',
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './no.png',
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './yes.png',
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './no.png',
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './happy.png',
+        emoji: "😊",
+        text: "Very Likely",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowUp: {
+        count: 0,
+        img: './meh.png',
+        emoji: "😐",
+        text: "Somewhat Likely",
+        thankYou: "We hope you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './frown.png',
+        emoji: "😞",
+        text: "Not Likely",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+    {
+      ArrowLeft: {
+        count: 0,
+        img: "/yes.png",
+        emoji: "😊",
+        text: "Yes",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: "/no.png",
+        emoji: "😞",
+        text: "No",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    }
+  ]
+
+
   const [counters, setCounters] = useState(
     JSON.parse(localStorage.getItem("counters")) ||
-      Array(questions.length).fill(defaultCounters)
+      (hq ? answerChoicesHQ : answerChoices)
   );
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -256,14 +487,15 @@ function Questionnaire() {
   }, [])
 
   return (
-    <div className="container">
+    <div className={`container ${thankYou ? 'thank-you' : 'question'}`}>
       {thankYou !== "" ? (
         <div className="thank-you">
           <h2 className="header" style={{ marginTop: 0 }}>
             Thank you for providing your feedback!
           </h2>
           <h4 className="sub">
-            {counters[currentQuestion][thankYou].thankYou}
+            {/* {counters[currentQuestion][thankYou].thankYou} */}
+            We hope you enjoyed your experience
           </h4>
         </div>
       ) : intro ? (
@@ -271,7 +503,7 @@ function Questionnaire() {
           <div className="main">
             <div className="face-wrap">
               <img
-                src="/good.png"
+                src={hq ? './good.png' : './happy.png'}
                 alt=""
                 style={{
                   opacity: flicker === "ArrowLeft" ? "0" : "1",
@@ -301,8 +533,8 @@ function Questionnaire() {
       ) : (
         <div className="rate">
           {/* <h2 className="header">Rate Us!</h2> */}
-          <h2 className="header">{questions[currentQuestion]}</h2>
-          <h4 className="sub">Tell us your experience</h4>
+          <h2 className="header question-header">{questions[currentQuestion]}</h2>
+          <h4 className="sub question-sub">Question {currentQuestion + 1} of {questions.length}</h4>
           <div className="main">
             {Object.entries(counters[currentQuestion]).map(([key, value]) =>
               key !== " " && key !== "ArrowDown" ? (
@@ -314,7 +546,7 @@ function Questionnaire() {
                       opacity: flicker === key ? "0" : "1",
                       transition: "opacity .1s",
                     }}
-                    className="face"
+                    className={`face ${!hq ? 'not-hq' : ''}`}
                   />{" "}
                   <span className="face-text">{value.text}</span>
                   {/* {showResults && ( */}
@@ -323,16 +555,16 @@ function Questionnaire() {
                     style={{ opacity: showResults ? 1 : 0 }}
                   >
                     Total: <b>{value.count}</b> (
-                    {counters[currentQuestion].ArrowUp.count +
-                      counters[currentQuestion].ArrowLeft.count +
-                      counters[currentQuestion].ArrowRight.count ===
+                    {counters[currentQuestion].ArrowUp?.count +
+                      counters[currentQuestion].ArrowLeft?.count +
+                      counters[currentQuestion].ArrowRight?.count ===
                     0
                       ? 0
                       : Math.round(
                           (value.count /
-                            (counters[currentQuestion].ArrowUp.count +
-                              counters[currentQuestion].ArrowLeft.count +
-                              counters[currentQuestion].ArrowRight.count)) *
+                            (counters[currentQuestion].ArrowUp?.count +
+                              counters[currentQuestion].ArrowLeft?.count +
+                              counters[currentQuestion].ArrowRight?.count)) *
                             100
                         )}
                     %)
