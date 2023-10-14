@@ -9,11 +9,19 @@
 }
 
 .container.thank-you {
-    background-image: url('/public/thankyou.png');
+    background: url('/public/thankyou.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .container.question {
-    background-image: url('/public/question.png');
+    background: url('/public/question.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .sub {
@@ -28,6 +36,50 @@
     color: rgba(255, 255, 255, 0.75);
 }
 
-.thank-you {
-    /* margin-bottom: 250px; */
+.container.intro-taco {
+    background: url('/public/taco-intro.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container.intro-taco * {
+    display: none;
+}
+
+.container.intro-taco .event-info {
+    display: block;
+}
+
+.container.question-taco {
+    background: url('/public/taco-question.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container.question-taco * {
+    display: none;
+}
+
+.container.question-taco .event-info {
+    display: block;
+}
+
+.container.thank-you-taco {
+    background: url('/public/taco-thankyou.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container.thank-you-taco * {
+    display: none;
+}
+
+.container.thank-you-taco .event-info {
+    display: block;
 }

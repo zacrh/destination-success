@@ -34,12 +34,16 @@ function Questionnaire() {
     " ": { count: 0, img: "", emoji: "", text: "" },
   };
 
-  const questions = [
+  const questionsDefault = [
     `How was your experience at \n Destination Success?`,
     "Were you able to complete your \n passport activity?",
     "Did you discover a new CTE \n course at SBISD?",
     "How likely are you to sign up for a \n CTE course at SBISD?",
     "Did you enjoy the hands-on activities \n at each career table?"
+  ];
+
+  const questionsTacos = [
+    "What did you think of the tacos today?"
   ];
 
 
@@ -79,6 +83,8 @@ function Questionnaire() {
   const [intro, setIntro] = useState(true);
   const [eventData, setEventData] = useState(null);
   const [votingSessionId, setVotingSessionId] = useState(null);
+  const [isTaco, setIsTaco] = useState(false);
+  const [questions, setQuestions] = useState(isTaco ? questionsTacos : questionsDefault);
   
   const hq = false;
 
@@ -276,10 +282,36 @@ function Questionnaire() {
     }
   ]
 
+  const answerChoicesTacos = [
+    {
+      ArrowLeft: {
+        count: 0,
+        img: './happy.png',
+        emoji: "😊",
+        text: "Great",
+        thankYou: "We're happy you enjoyed your experience",
+      },
+      ArrowUp: {
+        count: 0,
+        img: './meh.png',
+        emoji: "😐",
+        text: "OK",
+        thankYou: "We hope you enjoyed your experience",
+      },
+      ArrowRight: {
+        count: 0,
+        img: './frown.png',
+        emoji: "😞",
+        text: "Did Not Like",
+        thankYou: "We're sorry you didn't enjoy your experience",
+      },
+    },
+  ]
+
 
   const [counters, setCounters] = useState(
     JSON.parse(localStorage.getItem("counters")) ||
-      (hq ? answerChoicesHQ : answerChoices)
+      (!isTaco ? hq ? answerChoicesHQ : answerChoices : answerChoicesTacos)
   );
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -479,6 +511,12 @@ function Questionnaire() {
       }
       console.log(data.event_id);
       setEventData(data.event_id);
+
+      if (data.event_id.name === "Destination Success Tacos" || data.event_id.name === "Taco Test") {
+        setIsTaco(true);
+        setQuestions(questionsTacos);
+        setCounters(answerChoicesTacos); // resets locally every time but it's fine since we're sending votes to supabase after each vote
+      }
     }
 
     fetchEvent();
@@ -487,7 +525,7 @@ function Questionnaire() {
   }, [])
 
   return (
-    <div className={`container ${thankYou ? 'thank-you' : 'question'}`}>
+    <div className={`container ${!isTaco ? thankYou ? 'thank-you' : 'question' : intro ? 'intro-taco' : thankYou ? 'thank-you-taco' : 'question-taco'}`}>
       {thankYou !== "" ? (
         <div className="thank-you">
           <h2 className="header" style={{ marginTop: 0 }}>
