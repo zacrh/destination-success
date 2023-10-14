@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import "../components/Counter.css";
+import "../components/Questionnaire.css";
+import "../components/LicenseWrapper.css";
 import Questionnaire from '../components/Questionnaire';
 import LicenseWrapper from '../components/LicenseWrapper';
 ---
 
 <Layout title="Feedback">
     <LicenseWrapper client:only>
-<Questionnaire client:only />
-</LicenseWrapper>
+        <Questionnaire client:only />
+    </LicenseWrapper>
 </Layout>
