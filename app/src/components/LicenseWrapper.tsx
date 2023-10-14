@@ -142,7 +142,7 @@ export default function LicenseWrapper({ children }) {
         {!isValid ? (
             <div className="license">
                 <h2 className="header">Welcome!</h2>
-                <h4 className="sub">Please enter your key to start collecting feedback</h4>
+                <h4 className="sub license-sub">Please enter your key to start collecting feedback</h4>
                 <form onSubmit={handleSubmit} className={`license-form`}>
                     <input 
                         id="licenseKey"

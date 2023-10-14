@@ -65,3 +65,7 @@
 .questionnaire {
     height: 100%;
 }
+
+.sub.license-sub {
+    color: #c8cfd6 !important;
+}
