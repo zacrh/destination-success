@@ -310,8 +310,8 @@ function Questionnaire() {
 
 
   const [counters, setCounters] = useState(
-    JSON.parse(localStorage.getItem("counters")) ||
-      (!isTaco ? hq ? answerChoicesHQ : answerChoices : answerChoicesTacos)
+    // JSON.parse(localStorage.getItem("counters")) ||
+      (!isTaco ? hq ? answerChoicesHQ : answerChoices : answerChoicesTacos) // removed localStorage but it's fine because we're sending votes to supabase after each vote
   );
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
