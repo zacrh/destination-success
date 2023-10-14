@@ -137,14 +137,6 @@ export default function LicenseWrapper({ children }) {
   
   }, []);
 
-
-  // let deviceId = localStorage.getItem('deviceId');
-  // if (!deviceId) {
-  //   // deviceId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  //   deviceId = uuidv4(); // generate a new uuid if none was stored
-  //   localStorage.setItem('deviceId', deviceId);
-  // }
-
   return (
     <>
         {!isValid ? (
