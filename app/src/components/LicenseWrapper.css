@@ -46,11 +46,20 @@
     border: none;
     cursor: pointer;
     height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 136.91px;
 }
 
 .license-button.ineligible {
     background-color: #c8cfd6;
     cursor: not-allowed;
+}
+
+.license-button.loading {
+    opacity: .5;
+    cursor: wait;
 }
 
 .questionnaire {

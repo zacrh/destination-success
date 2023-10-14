@@ -95,3 +95,21 @@ body {
 .sub {
     text-align: center;
 }
+
+
+.face.intro-face {
+    max-height: 250px;
+    margin-bottom: 20px;
+}
+
+h2, h4, p, span {
+    text-align: center;
+}
+
+.event-info {
+    color: #c8cfd6;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    position: fixed;
+    bottom: 0;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from '../supabase';
+import { SpinnerCircular } from 'spinners-react';
 import "./Counter.css";
 import "./LicenseWrapper.css";
 
@@ -38,7 +39,7 @@ export default function LicenseWrapper({ children }) {
         setInvalidKeys([...invalidKeys, licenseKey]);
         return
     }
-    
+
     console.log(data);
     if (data.device !== null && data.device === deviceId) {
         console.log("License key activated on this device in the past. Logging in...")
@@ -151,7 +152,7 @@ export default function LicenseWrapper({ children }) {
                         placeholder='Enter your activation key'
                         className="license-input"
                     />
-                    <button type="submit" className={`license-button ${licenseKey.length === 36 ? 'eligible' : 'ineligible'}`}>Activate</button>
+                    <button type="submit" className={`license-button ${licenseKey.length !== 36 || invalidKeys.includes(licenseKey) ? 'ineligible' : 'eligible'} ${isLoading ? 'loading' : ''}`}>{isLoading ? <SpinnerCircular size="26" color="#fff" secondaryColor='rgba(200, 207, 214, .44)' /> : 'Activate'}</button>
                 </form>
             </div>
         ) : (

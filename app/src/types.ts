@@ -11,17 +11,17 @@ export interface Database {
     Tables: {
       devices: {
         Row: {
-          device: string | null
+          device: string
           device_id: string
           id: number
         }
         Insert: {
-          device?: string | null
+          device: string
           device_id: string
           id?: number
         }
         Update: {
-          device?: string | null
+          device?: string
           device_id?: string
           id?: number
         }
@@ -85,6 +85,92 @@ export interface Database {
             columns: ["event_id"]
             referencedRelation: "events"
             referencedColumns: ["id"]
+          }
+        ]
+      }
+      votes: {
+        Row: {
+          event: number | null
+          id: number
+          question: number | null
+          question_text: string | null
+          rating: number | null
+          rating_text: string | null
+          voted_at: string
+          voter: string | null
+          voting_session: string | null
+        }
+        Insert: {
+          event?: number | null
+          id?: number
+          question?: number | null
+          question_text?: string | null
+          rating?: number | null
+          rating_text?: string | null
+          voted_at?: string
+          voter?: string | null
+          voting_session?: string | null
+        }
+        Update: {
+          event?: number | null
+          id?: number
+          question?: number | null
+          question_text?: string | null
+          rating?: number | null
+          rating_text?: string | null
+          voted_at?: string
+          voter?: string | null
+          voting_session?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "votes_event_fkey"
+            columns: ["event"]
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "votes_voter_fkey"
+            columns: ["voter"]
+            referencedRelation: "licenses"
+            referencedColumns: ["license_key"]
+          }
+        ]
+      }
+      voting_session: {
+        Row: {
+          created_at: string
+          event: number | null
+          id: number
+          session_id: string | null
+          voter: string | null
+        }
+        Insert: {
+          created_at?: string
+          event?: number | null
+          id?: number
+          session_id?: string | null
+          voter?: string | null
+        }
+        Update: {
+          created_at?: string
+          event?: number | null
+          id?: number
+          session_id?: string | null
+          voter?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "voting_session_event_fkey"
+            columns: ["event"]
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "voting_session_voter_fkey"
+            columns: ["voter"]
+            referencedRelation: "licenses"
+            referencedColumns: ["license_key"]
           }
         ]
       }
