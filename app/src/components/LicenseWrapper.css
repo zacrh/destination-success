@@ -69,3 +69,7 @@
 .sub.license-sub {
     color: #c8cfd6 !important;
 }
+
+.license-input.invalid {
+    border-color: #EB544D;
+}

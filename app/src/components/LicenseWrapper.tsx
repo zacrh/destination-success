@@ -21,6 +21,10 @@ export default function LicenseWrapper({ children }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (licenseKey.length !== 36 || invalidKeys.includes(licenseKey)) {
+        console.error("Invalid license key");
+        return
+    }
 
     setIsLoading(true);
     const { data, error: licenseError } = await supabase
@@ -31,12 +35,16 @@ export default function LicenseWrapper({ children }) {
         .single()
         if (licenseError) {
             console.error(licenseError)
+            console.error("Invalid license key")
+            setInvalidKeys([...invalidKeys, licenseKey]);
+            setIsLoading(false);
             return
         }
     
     if (!data) {
         console.error("Invalid license key")
         setInvalidKeys([...invalidKeys, licenseKey]);
+        setIsLoading(false);
         return
     }
 
@@ -150,7 +158,7 @@ export default function LicenseWrapper({ children }) {
                         value={licenseKey}
                         onChange={handleChange} 
                         placeholder='Enter your activation key'
-                        className="license-input"
+                        className={`license-input ${invalidKeys.includes(licenseKey) ? 'invalid' : ''}`}
                     />
                     <button type="submit" className={`license-button ${licenseKey.length !== 36 || invalidKeys.includes(licenseKey) ? 'ineligible' : 'eligible'} ${isLoading ? 'loading' : ''}`}>{isLoading ? <SpinnerCircular size="26" color="#fff" secondaryColor='rgba(200, 207, 214, .44)' /> : 'Activate'}</button>
                 </form>
