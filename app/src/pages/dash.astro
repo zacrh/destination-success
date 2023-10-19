@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GetSummary from '../components/GetSummary';
+import '../../globals.css'
+---
+
+<Layout title="Feedback">
+    <GetSummary client:only />
+</Layout>
