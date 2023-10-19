@@ -246,6 +246,8 @@ function GetSummary() {
         }
       }
 
+      // generalQuestions.reverse()
+
       console.log(generalQuestions); // Outputs the array of questions
       console.log(generalResponseSummaries); // Outputs the object of response summaries
       setGeneralQuestions(generalQuestions);
@@ -431,7 +433,7 @@ function GetSummary() {
                           Question {index + 1} Answer Choices
                         </CardTitle>
                         <CardDescription>
-                          {currentQuestions[index]?.question_text}
+                          {currentQuestions[currentQuestions.length - index - 1].question_text}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>

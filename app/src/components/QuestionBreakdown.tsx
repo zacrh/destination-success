@@ -26,6 +26,14 @@ import {
         summaryArray.reverse();
     }
 
+    if (summaryArray.length === 2 && summaryArray[0].name === 'good') {
+        let new_choice = {
+            name: 'bad',
+            total: 0
+        }
+        summaryArray.push(new_choice);
+    }
+
     const totalVotes = summaryArray.reduce((a, b) => a + b.total, 0);
 
     return (

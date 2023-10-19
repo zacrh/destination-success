@@ -72,7 +72,14 @@ export const Overview = ({data, currentQuestion}) => {
           }));
           if (updatedSummaryArray.length === 2 && updatedSummaryArray[0].name === 'No') {
             updatedSummaryArray.reverse();
-        }
+            }
+            if (updatedSummaryArray.length === 2 && updatedSummaryArray[0].name === 'Good') {
+                let new_choice = {
+                    name: 'Bad',
+                    total: 0
+                }
+                updatedSummaryArray.push(new_choice);
+            }
           setSummaryArray(updatedSummaryArray);
         }
       }, [data, currentQuestion]);
